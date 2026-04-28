@@ -1,9 +1,11 @@
 <?php
-    $nomes = ["João", "Maria", "Pedro", "Ana"];
-    $novoNome = $_GET["nome"] ?? null;
+    session_start();
+    $nomes = $_SESSION["nomes"] ?? null;
 
-    if ($novoNome !== null) {
+    $novoNome = $_GET["nome"] ?? null;
+    if ($novoNome) {
         $nomes[] = $novoNome;
+        $_SESSION["nomes"] = $nomes;
     }
 ?>
     <h2>Lista de Nomes</h2>
